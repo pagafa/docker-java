@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:3.3
 MAINTAINER Pablo Gallego Falcon "pablo@gallegofalcon.com"
 
 ENV JAVA_VERSION_MAJOR 8
