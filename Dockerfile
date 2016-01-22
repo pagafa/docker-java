@@ -38,4 +38,4 @@ ENV JAVA_HOME /jre
 ENV PATH ${PATH}:${JAVA_HOME}/bin
 ENV LANG C.UTF-8
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/urandom"]
+#ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/urandom"]
