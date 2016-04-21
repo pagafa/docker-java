@@ -2,8 +2,8 @@ FROM alpine:3.3
 MAINTAINER Pablo Gallego Falcon "pablo@gallegofalcon.com"
 
 ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 74
-ENV JAVA_VERSION_BUILD 02
+ENV JAVA_VERSION_MINOR 92
+ENV JAVA_VERSION_BUILD 14
 ENV JAVA_PACKAGE server-jre
 
 RUN apk add --update curl ca-certificates && \
