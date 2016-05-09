@@ -6,7 +6,7 @@ ENV JAVA_VERSION_MINOR 92
 ENV JAVA_VERSION_BUILD 14
 ENV JAVA_PACKAGE server-jre
 
-RUN apk add --update curl ca-certificates && \
+RUN apk add --update curl ca-certificates paxctl && \
     cd /tmp && \
     curl -o glibc-2.21-r2.apk "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk" && \
     apk add --allow-untrusted glibc-2.21-r2.apk && \
@@ -15,7 +15,8 @@ RUN apk add --update curl ca-certificates && \
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie"\
     http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz | gunzip -c - | tar -xf - && \
-    apk del curl ca-certificates && \
+    paxctl -c -m jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR}/jre/bin/java && \
+    apk del curl ca-certificates paxctl && \
     mv jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR}/jre /jre && \
     rm /jre/bin/jjs && \
     rm /jre/bin/keytool && \
